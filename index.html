@@ -49,7 +49,7 @@ body::after{
 /* ---------- cabecera roja ---------- */
 .franja{
   width:100%;background:linear-gradient(160deg,var(--rojo-vivo),var(--rojo) 55%,var(--rojo-oscuro));
-  color:#fff;padding:max(22px,env(safe-area-inset-top)) 20px 96px;
+  color:#fff;padding:max(22px,env(safe-area-inset-top)) 20px 150px;
   display:flex;justify-content:center;position:relative;overflow:hidden;
 }
 .franja::before{
@@ -63,7 +63,7 @@ body::after{
 
 /* ---------- tarjeta ---------- */
 .tarjeta{
-  width:min(560px,calc(100% - 32px));margin-top:-72px;position:relative;
+  width:min(560px,calc(100% - 32px));margin-top:-96px;position:relative;
   background:var(--papel);border-radius:var(--radio);box-shadow:var(--sombra);
   border:1px solid rgba(255,255,255,.7);padding:0 0 26px;
   animation:subir .8s cubic-bezier(.2,.8,.2,1) both;
@@ -161,7 +161,12 @@ body::after{
 .toast.ver{opacity:1;transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (min-width:640px){body{padding-bottom:64px}.tarjeta{padding-bottom:30px}}
-@media (max-width:440px){.franja .anios{display:none}.franja-in{justify-content:flex-start}}
+@media (max-width:440px){
+  .franja .anios{display:none}.franja-in{justify-content:center}
+  .grilla{grid-template-columns:1fr}
+  .accion .s{white-space:normal}
+  .nombre{font-size:clamp(28px,9vw,36px)}
+}
 </style>
 </head>
 <body>
