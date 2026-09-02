@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Iván Bastías Castex · Compra de Envases · Carozzi</title>
+<meta name="description" content="Tarjeta de contacto de Iván Bastías Castex, Compra de Envases en Empresas Carozzi. Guarda el contacto, escribe por WhatsApp o llama directo.">
+<link rel="canonical" href="https://aictmopenclaw-a11y.github.io/ivan-bastias/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Iván Bastías Castex · Carozzi">
+<meta property="og:description" content="Compra de Envases · Empresas Carozzi. Toca para guardar el contacto.">
+<meta property="og:image" content="https://aictmopenclaw-a11y.github.io/ivan-bastias/assets/og.png">
+<meta property="og:url" content="https://aictmopenclaw-a11y.github.io/ivan-bastias/">
+<meta property="og:locale" content="es_CL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#b3121b">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rojo:#b3121b; --rojo-oscuro:#7e0b12; --rojo-vivo:#d61f2a;
+  --crema:#f6f1e8; --papel:#fffdf9; --tinta:#1d1816; --tinta-suave:#5c534e;
+  --linea:rgba(29,24,22,.12); --sombra:0 24px 60px -24px rgba(126,11,18,.35);
+  --radio:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
+  color:var(--tinta);background:var(--crema);
+  min-height:100svh;display:flex;flex-direction:column;align-items:center;
+  padding:0 0 48px;overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(60% 40% at 50% -10%, rgba(214,31,42,.22), transparent 70%),
+    radial-gradient(40% 30% at 100% 100%, rgba(179,18,27,.10), transparent 70%),
+    var(--crema);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- cabecera roja ---------- */
+.franja{
+  width:100%;background:linear-gradient(160deg,var(--rojo-vivo),var(--rojo) 55%,var(--rojo-oscuro));
+  color:#fff;padding:max(22px,env(safe-area-inset-top)) 20px 96px;
+  display:flex;justify-content:center;position:relative;overflow:hidden;
+}
+.franja::before{
+  content:"";position:absolute;inset:-40% -20% auto;height:120%;
+  background:radial-gradient(closest-side, rgba(255,255,255,.14), transparent);
+  transform:translateX(-30%);pointer-events:none;
+}
+.franja-in{width:min(560px,100%);display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.franja img{height:30px;width:auto;filter:brightness(0) invert(1);opacity:.95}
+.franja .anios{font-family:"Fraunces",serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+
+/* ---------- tarjeta ---------- */
+.tarjeta{
+  width:min(560px,calc(100% - 32px));margin-top:-72px;position:relative;
+  background:var(--papel);border-radius:var(--radio);box-shadow:var(--sombra);
+  border:1px solid rgba(255,255,255,.7);padding:0 0 26px;
+  animation:subir .8s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes subir{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.hero{padding:0 28px;text-align:center;position:relative}
+.avatar{
+  width:132px;height:132px;border-radius:50%;margin:-66px auto 0;position:relative;
+  background:linear-gradient(145deg,#fff,#efe6d8);
+  border:6px solid var(--papel);box-shadow:0 12px 30px -10px rgba(0,0,0,.35);
+  display:grid;place-items:center;overflow:hidden;
+}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.avatar .ini{font-family:"Fraunces",serif;font-weight:500;font-size:52px;color:var(--rojo);letter-spacing:-.02em;line-height:1}
+.nombre{
+  font-family:"Fraunces",serif;font-weight:500;font-size:clamp(30px,8vw,40px);
+  letter-spacing:-.02em;line-height:1.05;margin-top:18px;
+  font-variation-settings:"opsz" 144;
+}
+.cargo{margin-top:8px;font-size:15px;color:var(--tinta-suave);font-weight:500;letter-spacing:.01em}
+.cargo b{color:var(--rojo);font-weight:600}
+.empresa{
+  display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:7px 14px 7px 10px;
+  border:1px solid var(--linea);border-radius:999px;font-size:13px;color:var(--tinta-suave);
+  background:#fff;
+}
+.empresa img{height:16px;width:auto}
+
+/* ---------- acción principal ---------- */
+.principal{
+  margin:26px 24px 0;display:flex;align-items:center;justify-content:center;gap:12px;
+  background:var(--rojo);color:#fff;text-decoration:none;font-weight:600;font-size:17px;
+  padding:18px 22px;border-radius:16px;box-shadow:0 14px 30px -12px rgba(179,18,27,.6);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.principal:active{transform:scale(.98);box-shadow:0 8px 18px -10px rgba(179,18,27,.6)}
+.principal svg{width:22px;height:22px;flex:none}
+.principal small{display:block;font-weight:400;font-size:12px;opacity:.85;margin-top:1px}
+
+/* ---------- grilla de contacto ---------- */
+.grilla{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 24px 0}
+.accion{
+  display:flex;align-items:center;gap:12px;padding:14px 14px;border-radius:14px;
+  background:#fff;border:1px solid var(--linea);text-decoration:none;color:var(--tinta);
+  transition:transform .15s ease,border-color .15s ease,background .15s ease;
+  animation:subir .7s cubic-bezier(.2,.8,.2,1) both;
+}
+.accion:nth-child(1){animation-delay:.10s}.accion:nth-child(2){animation-delay:.16s}
+.accion:nth-child(3){animation-delay:.22s}.accion:nth-child(4){animation-delay:.28s}
+.accion:hover{border-color:rgba(179,18,27,.35);transform:translateY(-2px)}
+.accion:active{transform:scale(.98)}
+.ico{
+  width:40px;height:40px;border-radius:12px;flex:none;display:grid;place-items:center;
+  background:rgba(179,18,27,.08);color:var(--rojo);
+}
+.ico svg{width:20px;height:20px}
+.accion .t{font-weight:600;font-size:14px;line-height:1.15}
+.accion .s{font-size:12px;color:var(--tinta-suave);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.accion .txt{min-width:0}
+.accion .t,.accion .s{display:block}
+.accion.wa .ico{background:rgba(37,211,102,.14);color:#128c4a}
+
+/* ---------- datos ---------- */
+.datos{margin:22px 24px 0;border-top:1px dashed var(--linea);padding-top:18px;display:grid;gap:12px}
+.dato{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:14px;line-height:1.45}
+.dato svg{width:18px;height:18px;color:var(--rojo);margin-top:2px}
+.dato a{color:inherit;text-decoration:none;border-bottom:1px solid var(--linea)}
+.dato .k{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:2px}
+
+/* ---------- marcas ---------- */
+.marcas{margin:26px 0 0;padding:18px 24px 0;border-top:1px dashed var(--linea);text-align:center}
+.marcas p{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave)}
+.logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 22px;margin-top:14px}
+.logos img{height:30px;width:auto;max-width:96px;object-fit:contain;filter:saturate(.95);transition:transform .2s ease}
+.logos img:hover{transform:scale(1.08)}
+
+/* ---------- pie ---------- */
+.pie{width:min(560px,calc(100% - 32px));margin-top:18px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.compartir{
+  display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;
+  background:transparent;border:1px solid rgba(29,24,22,.25);color:var(--tinta);font:inherit;font-weight:500;font-size:14px;cursor:pointer;
+}
+.compartir svg{width:16px;height:16px}
+.qr{
+  display:none;background:#fff;padding:14px;border-radius:16px;border:1px solid var(--linea);text-align:center;
+}
+.qr.abierto{display:block;animation:subir .4s ease both}
+.qr img{width:200px;height:200px;display:block;margin:0 auto}
+.qr p{font-size:12px;color:var(--tinta-suave);margin-top:8px}
+.aviso{font-size:12px;color:var(--tinta-suave);text-align:center;opacity:.8}
+.toast{
+  position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;
+  background:var(--tinta);color:#fff;padding:10px 16px;border-radius:999px;font-size:13px;transition:.25s ease;
+}
+.toast.ver{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (min-width:640px){body{padding-bottom:64px}.tarjeta{padding-bottom:30px}}
+</style>
+</head>
+<body>
+
+<header class="franja">
+  <div class="franja-in">
+    <img src="assets/logos/carozzi.png" alt="Carozzi">
+    <span class="anios">Compartir hace bien</span>
+  </div>
+</header>
+
+<main class="tarjeta">
+  <section class="hero">
+    <div class="avatar" aria-hidden="true">
+      <span class="ini">IB</span>
+    </div>
+    <h1 class="nombre">Iván Bastías<br>Castex</h1>
+    <p class="cargo"><b>Compra de Envases</b></p>
+    <span class="empresa"><img src="assets/logos/carozzi.png" alt="">Empresas Carozzi S.A.</span>
+  </section>
+
+  <a class="principal" href="ivan-bastias.vcf" download="ivan-bastias.vcf">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+    <span>Guardar contacto<small>Se agrega a tu agenda con un toque</small></span>
+  </a>
+
+  <nav class="grilla" aria-label="Contacto directo">
+    <a class="accion wa" href="https://wa.me/56966473044?text=Hola%20Iv%C3%A1n%2C%20te%20escribo%20desde%20tu%20tarjeta%20digital." target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 1.67a8.24 8.24 0 0 1 8.24 8.24 8.24 8.24 0 0 1-8.24 8.24c-1.46 0-2.9-.39-4.16-1.13l-.3-.17-3.12.82.83-3.04-.19-.31a8.2 8.2 0 0 1-1.26-4.41 8.24 8.24 0 0 1 8.2-8.24m-3.4 4.43c-.16 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.39 1.01 2.56.12.16 1.75 2.67 4.23 3.74 2.06.81 2.48.65 2.93.61.45-.04 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28-.24-.12-1.45-.72-1.68-.8-.22-.08-.39-.12-.55.12-.16.25-.63.8-.77.96-.14.16-.28.18-.53.06-.24-.12-1.03-.38-1.97-1.21-.73-.65-1.22-1.45-1.36-1.69-.14-.25-.02-.38.11-.5.11-.11.24-.29.37-.43.12-.14.16-.25.24-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47"/></svg></span>
+      <span class="txt"><span class="t">WhatsApp</span><span class="s">+56 9 6647 3044</span></span>
+    </a>
+    <a class="accion" href="tel:+56966473044">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+      <span class="txt"><span class="t">Llamar</span><span class="s">Móvil directo</span></span>
+    </a>
+    <a class="accion" href="mailto:ibastias@carozzi.cl">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+      <span class="txt"><span class="t">Email</span><span class="s">ibastias@carozzi.cl</span></span>
+    </a>
+    <a class="accion" href="https://www.google.com/maps/search/?api=1&query=Camino+Internacional+2825%2C+Re%C3%B1aca+Alto%2C+Vi%C3%B1a+del+Mar%2C+Chile" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+      <span class="txt"><span class="t">Cómo llegar</span><span class="s">Planta Reñaca Alto</span></span>
+    </a>
+  </nav>
+
+  <section class="datos">
+    <div class="dato">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+      <div><span class="k">Dirección</span>Camino Internacional 2825<br>Reñaca Alto, Viña del Mar, Chile · CP 2540059</div>
+    </div>
+    <div class="dato">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <div><span class="k">Sitio web</span><a href="https://www.carozzi.cl" target="_blank" rel="noopener">www.carozzi.cl</a></div>
+    </div>
+  </section>
+
+  <section class="marcas" aria-label="Marcas Carozzi">
+    <p>Marcas del grupo</p>
+    <div class="logos">
+      <img src="assets/logos/ambrosoli.png" alt="Ambrosoli">
+      <img src="assets/logos/costa.png" alt="Costa">
+      <img src="assets/logos/bresler.png" alt="Bresler">
+      <img src="assets/logos/san-francisco.png" alt="San Francisco">
+      <img src="assets/logos/master-cat.png" alt="Master Cat">
+      <img src="assets/logos/master-dog.png" alt="Master Dog">
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <button class="compartir" id="btn-compartir" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    Compartir esta tarjeta
+  </button>
+  <div class="qr" id="qr">
+    <img src="assets/qr-pagina.svg" alt="Código QR de esta tarjeta">
+    <p>Escanea para abrir esta tarjeta</p>
+  </div>
+  <p class="aviso">Tarjeta digital permanente · sin plataformas intermedias</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var url = "https://aictmopenclaw-a11y.github.io/ivan-bastias/";
+  var btn = document.getElementById("btn-compartir");
+  var qr = document.getElementById("qr");
+  var toast = document.getElementById("toast");
+  function aviso(msg){ toast.textContent = msg; toast.classList.add("ver"); setTimeout(function(){ toast.classList.remove("ver"); }, 2200); }
+  btn.addEventListener("click", function(){
+    if (navigator.share) {
+      navigator.share({ title: "Iván Bastías Castex · Carozzi", text: "Contacto de Iván Bastías Castex, Compra de Envases en Carozzi", url: url }).catch(function(){});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(function(){ aviso("Enlace copiado"); });
+    }
+    qr.classList.toggle("abierto");
+  });
+})();
+</script>
+</body>
+</html>
