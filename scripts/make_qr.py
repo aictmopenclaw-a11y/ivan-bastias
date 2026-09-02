@@ -8,8 +8,10 @@ import segno
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "entregables"
+OUT = ROOT / "assets/qr"          # archivos técnicos (todos los formatos)
 OUT.mkdir(exist_ok=True)
+FINAL = ROOT / "entregables"      # solo lo que se entrega
+FINAL.mkdir(exist_ok=True)
 
 URL = "https://ivan-bastias.vercel.app/"
 
@@ -53,3 +55,8 @@ export(qr_a, "qr-pagina", logo=ROOT / "assets/logos/carozzi-icono.png")
 
 qr_b = segno.make(VCARD_MIN, error="m", boost_error=False)
 export(qr_b, "qr-vcard")
+
+import shutil
+shutil.copy(OUT / "qr-pagina-con-logo.png", FINAL / "3-qr-principal.png")
+shutil.copy(OUT / "qr-vcard.png", FINAL / "4-qr-respaldo-sin-internet.png")
+print("copiados a entregables")

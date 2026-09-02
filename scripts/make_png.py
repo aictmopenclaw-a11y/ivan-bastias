@@ -105,5 +105,5 @@ def render(W, H, name, layout="vertical"):
         c.alpha_composite(l, (x, py + (int(56*S) - l.height)//2)); x += l.width + gap
     c.convert("RGB").save(OUT / name, optimize=True); print("OK", name, (W, H))
 
-render(1200, 1800, "tarjeta-qr-vertical.png")
-render(1500, 1500, "tarjeta-qr-cuadrada.png", layout="horizontal")
+render(1200, 1800, "1-tarjeta-vertical.png")
+render(1500, 1500, "2-tarjeta-cuadrada.png", layout="horizontal")

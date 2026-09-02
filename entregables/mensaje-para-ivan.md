@@ -10,10 +10,11 @@ Al abrirla desde el celular aparece tu nombre, cargo, WhatsApp, teléfono, corre
 
 | Archivo | Para qué sirve |
 |---|---|
-| `qr-pagina.png` / `qr-pagina.svg` / `qr-pagina.pdf` | **El QR principal.** Va en la tarjeta impresa, pendones, firma de correo. Abre la tarjeta digital. |
-| `qr-pagina-con-logo.png` | El mismo QR con el logo de Carozzi al centro. Se ve más elegante y se lee igual de bien. |
-| `qr-vcard.png` / `qr-vcard.svg` | **QR de respaldo.** Lleva tus datos dentro del código: funciona aunque no haya internet ni exista la página. Al escanearlo, el teléfono ofrece "Agregar contacto" directo. Es más denso, así que imprimirlo a 3 cm o más. |
-| `tarjeta-qr-imprimir.pdf` | Tarjeta de 90 x 55 mm lista para imprenta, con el QR principal. También sirve como sticker para pegar sobre el QR antiguo de las tarjetas que ya tienes. |
+| `1-tarjeta-vertical.png` | Imagen diseñada con el QR, para imprimir o enviar. |
+| `2-tarjeta-cuadrada.png` | La misma en formato cuadrado, ideal para WhatsApp y redes. |
+| `3-qr-principal.png` | **El QR solo**, con el logo de Carozzi al centro. Va en tarjetas, pendones, firma de correo. Abre la tarjeta digital. |
+| `4-qr-respaldo-sin-internet.png` | **QR de respaldo.** Lleva tus datos dentro del código: funciona aunque no haya internet ni exista la página. Imprimirlo a 3 cm o más. |
+| `5-tarjeta-imprenta-90x55mm.pdf` | Tarjeta lista para imprenta con el QR principal. Sirve también como sticker sobre el QR antiguo. |
 
 ## Por qué este QR no va a vencer
 

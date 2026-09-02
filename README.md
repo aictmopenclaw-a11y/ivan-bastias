@@ -6,7 +6,7 @@ Tarjeta de contacto permanente publicada en Vercel (cuenta aictmopenclaw):
 - `index.html` — la tarjeta (HTML/CSS puro, sin build, sin dependencias).
 - `ivan-bastias.vcf` — contacto descargable (vCard 3.0).
 - `assets/logos/` — logos oficiales en PNG con transparencia (fuente: carozzicorp.com y mastercat.cl).
-- `scripts/make_qr.py` — genera los QR en `entregables/` (segno, local).
+- `scripts/make_qr.py` — genera los QR en `assets/qr/` y copia los finales a `entregables/` (segno, local).
 - `scripts/verify_qr.py` — decodifica los QR y confirma el contenido.
 - `scripts/process_logos.py` — limpia los logos crudos de `assets/logos/raw/` (carpeta ignorada en git).
 

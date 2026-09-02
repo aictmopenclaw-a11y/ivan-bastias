@@ -20,13 +20,13 @@ try:
 except Exception as e:
     print("fuentes fallback:", e); F_SERIF, F_SANS = "Times-Roman", "Helvetica"
 
-c = canvas.Canvas(str(OUT / "tarjeta-qr-imprimir.pdf"), pagesize=(W, H))
+c = canvas.Canvas(str(OUT / "5-tarjeta-imprenta-90x55mm.pdf"), pagesize=(W, H))
 c.setTitle("Iván Bastías Castex · QR"); c.setAuthor("Kyest Marketing")
 # fondo crema + franja roja izquierda
 c.setFillColor(HexColor("#f6f1e8")); c.rect(0, 0, W, H, stroke=0, fill=1)
 c.setFillColor(ROJO); c.rect(0, 0, 4 * mm, H, stroke=0, fill=1)
 # QR (SVG vectorial) a 32 mm
-qr = svg2rlg(str(OUT / "qr-pagina.svg"))
+qr = svg2rlg(str(ROOT / "assets/qr/qr-pagina.svg"))
 s = (32 * mm) / qr.width; qr.width *= s; qr.height *= s; qr.scale(s, s)
 c.setFillColor(white); c.roundRect(9 * mm, (H - 36 * mm) / 2, 36 * mm, 36 * mm, 2 * mm, stroke=0, fill=1)
 renderPDF.draw(qr, c, 11 * mm, (H - 32 * mm) / 2)
