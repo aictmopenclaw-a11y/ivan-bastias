@@ -34,8 +34,15 @@ for y in range(H):
 lg = Image.open(A / "logos/carozzi.png").convert("RGBA")
 white = Image.new("RGBA", lg.size, (255, 255, 255, 255)); white.putalpha(lg.split()[3])
 white.thumbnail((260, 80)); im.paste(white, (70, 70), white)
-# iniciales grandes
-fi = font(190); d.text((70, 300), "IB", font=fi, fill=(255, 255, 255))
+# foto circular (o iniciales si no existe)
+foto = A / "foto.jpg"
+if foto.exists():
+    ph = Image.open(foto).convert("RGB").resize((360, 360), Image.LANCZOS)
+    mask = Image.new("L", (1440, 1440), 0); ImageDraw.Draw(mask).ellipse((0, 0, 1439, 1439), fill=255); mask = mask.resize((360, 360), Image.LANCZOS)
+    ring = Image.new("RGB", (376, 376), (255, 255, 255)); rmask = Image.new("L", (1504, 1504), 0); ImageDraw.Draw(rmask).ellipse((0, 0, 1503, 1503), fill=255); rmask = rmask.resize((376, 376), Image.LANCZOS)
+    im.paste(ring, (62, 200), rmask); im.paste(ph, (70, 208), mask)
+else:
+    fi = font(190); d.text((70, 300), "IB", font=fi, fill=(255, 255, 255))
 # texto
 fn = font(64); fs = font(30, serif=False); fk = font(22, serif=False)
 d.text((560, 170), "Iván Bastías", font=fn, fill="#1d1816")
