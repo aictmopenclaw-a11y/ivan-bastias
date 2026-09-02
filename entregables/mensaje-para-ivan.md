@@ -4,7 +4,7 @@ Hola Iván, te dejamos lista tu nueva tarjeta digital:
 
 **https://ivan-bastias.vercel.app/**
 
-Al abrirla desde el celular aparece tu nombre, cargo, WhatsApp, teléfono, correo, dirección y las marcas de Carozzi. El botón rojo "Guardar contacto" agrega tus datos a la agenda del teléfono con un toque.
+Al abrirla desde el celular aparece tu foto, nombre, cargo, WhatsApp, teléfono, correo, dirección y las marcas de Carozzi. El botón rojo "Guardar contacto" agrega tus datos a la agenda del teléfono con un toque.
 
 ## Los archivos que van adjuntos
 
@@ -32,6 +32,5 @@ La tarjeta tiene botones ES / EN / PT arriba a la derecha. Sirve para ferias int
 
 ## Opcional, si quieres mejorarla
 
-- Una foto tuya para la cabecera (hoy salen tus iniciales "IB").
 - Tu perfil de LinkedIn.
 - Teléfono fijo de oficina.
