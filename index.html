@@ -158,7 +158,6 @@ body::after{
 .qr.abierto{display:block;animation:subir .4s ease both}
 .qr img{width:200px;height:200px;display:block;margin:0 auto}
 .qr p{font-size:12px;color:var(--tinta-suave);margin-top:8px}
-.aviso{font-size:12px;color:var(--tinta-suave);text-align:center;opacity:.8}
 .toast{
   position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;
   background:var(--tinta);color:#fff;padding:10px 16px;border-radius:999px;font-size:13px;transition:.25s ease;
@@ -258,7 +257,6 @@ body::after{
     <img src="assets/qr/qr-pagina.svg" alt="Código QR de esta tarjeta">
     <p data-i18n="qr">Escanea para abrir esta tarjeta</p>
   </div>
-  <p class="aviso" data-i18n="aviso">Tarjeta digital permanente · sin plataformas intermedias</p>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -267,9 +265,9 @@ body::after{
 (function(){
   var url = "https://ivan-bastias.vercel.app/";
   var I18N = {
-    es: {lema:"Compartir hace bien", cargo:"Compra de Envases", guardar:"Guardar contacto", guardar_sub:"Se agrega a tu agenda con un toque", llamar:"Llamar", movil:"Móvil directo", email:"Email", llegar:"Cómo llegar", planta:"Planta Reñaca Alto", direccion:"Dirección", web:"Sitio web", marcas:"Marcas del grupo", compartir:"Compartir esta tarjeta", qr:"Escanea para abrir esta tarjeta", aviso:"Tarjeta digital permanente · sin plataformas intermedias", copiado:"Enlace copiado", wa:"Hola Iván, te escribo desde tu tarjeta digital.", share:"Contacto de Iván Bastías Castex, Compra de Envases en Carozzi", title:"Iván Bastías Castex · Compra de Envases · Carozzi", vcf:"ivan-bastias.vcf", html:"es"},
-    en: {lema:"Sharing does good", cargo:"Packaging Procurement", guardar:"Save contact", guardar_sub:"Added to your phone in one tap", llamar:"Call", movil:"Direct mobile", email:"Email", llegar:"Directions", planta:"Reñaca Alto plant", direccion:"Address", web:"Website", marcas:"Group brands", compartir:"Share this card", qr:"Scan to open this card", aviso:"Permanent digital card · no third-party platforms", copiado:"Link copied", wa:"Hi Iván, I'm reaching out from your digital card.", share:"Contact details for Iván Bastías Castex, Packaging Procurement at Carozzi", title:"Iván Bastías Castex · Packaging Procurement · Carozzi", vcf:"ivan-bastias-en.vcf", html:"en"},
-    pt: {lema:"Compartilhar faz bem", cargo:"Compras de Embalagens", guardar:"Salvar contato", guardar_sub:"Vai para a sua agenda com um toque", llamar:"Ligar", movil:"Celular direto", email:"E-mail", llegar:"Como chegar", planta:"Fábrica Reñaca Alto", direccion:"Endereço", web:"Site", marcas:"Marcas do grupo", compartir:"Compartilhar este cartão", qr:"Escaneie para abrir este cartão", aviso:"Cartão digital permanente · sem plataformas intermediárias", copiado:"Link copiado", wa:"Olá Iván, estou entrando em contato pelo seu cartão digital.", share:"Contato de Iván Bastías Castex, Compras de Embalagens na Carozzi", title:"Iván Bastías Castex · Compras de Embalagens · Carozzi", vcf:"ivan-bastias-pt.vcf", html:"pt-BR"}
+    es: {lema:"Compartir hace bien", cargo:"Compra de Envases", guardar:"Guardar contacto", guardar_sub:"Se agrega a tu agenda con un toque", llamar:"Llamar", movil:"Móvil directo", email:"Email", llegar:"Cómo llegar", planta:"Planta Reñaca Alto", direccion:"Dirección", web:"Sitio web", marcas:"Marcas del grupo", compartir:"Compartir esta tarjeta", qr:"Escanea para abrir esta tarjeta", copiado:"Enlace copiado", wa:"Hola Iván, te escribo desde tu tarjeta digital.", share:"Contacto de Iván Bastías Castex, Compra de Envases en Carozzi", title:"Iván Bastías Castex · Compra de Envases · Carozzi", vcf:"ivan-bastias.vcf", html:"es"},
+    en: {lema:"Sharing does good", cargo:"Packaging Procurement", guardar:"Save contact", guardar_sub:"Added to your phone in one tap", llamar:"Call", movil:"Direct mobile", email:"Email", llegar:"Directions", planta:"Reñaca Alto plant", direccion:"Address", web:"Website", marcas:"Group brands", compartir:"Share this card", qr:"Scan to open this card", copiado:"Link copied", wa:"Hi Iván, I'm reaching out from your digital card.", share:"Contact details for Iván Bastías Castex, Packaging Procurement at Carozzi", title:"Iván Bastías Castex · Packaging Procurement · Carozzi", vcf:"ivan-bastias-en.vcf", html:"en"},
+    pt: {lema:"Compartilhar faz bem", cargo:"Compras de Embalagens", guardar:"Salvar contato", guardar_sub:"Vai para a sua agenda com um toque", llamar:"Ligar", movil:"Celular direto", email:"E-mail", llegar:"Como chegar", planta:"Fábrica Reñaca Alto", direccion:"Endereço", web:"Site", marcas:"Marcas do grupo", compartir:"Compartilhar este cartão", qr:"Escaneie para abrir este cartão", copiado:"Link copiado", wa:"Olá Iván, estou entrando em contato pelo seu cartão digital.", share:"Contato de Iván Bastías Castex, Compras de Embalagens na Carozzi", title:"Iván Bastías Castex · Compras de Embalagens · Carozzi", vcf:"ivan-bastias-pt.vcf", html:"pt-BR"}
   };
   var cur = "es";
   function setLang(l){
