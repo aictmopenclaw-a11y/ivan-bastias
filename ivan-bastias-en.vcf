@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Bastías Castex;Iván;;;
+FN:Iván Bastías Castex
+ORG:Empresas Carozzi S.A.
+TITLE:Packaging Procurement
+TEL;TYPE=CELL,VOICE:+56966473044
+EMAIL;TYPE=INTERNET,WORK:ibastias@carozzi.cl
+ADR;TYPE=WORK:;;Camino Internacional 2825;Reñaca Alto, Viña del Mar;Valparaíso;2540059;Chile
+URL;TYPE=WORK:https://www.carozzi.cl
+URL:https://ivan-bastias.vercel.app/
+NOTE:Tarjeta digital: https://ivan-bastias.vercel.app/
+END:VCARD
