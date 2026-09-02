@@ -14,8 +14,18 @@ Tarjeta de contacto permanente publicada en Vercel (cuenta aictmopenclaw):
 El QR impreso codifica directamente la URL de arriba. No hay acortador, plataforma ni suscripción entre medio.
 Mientras exista el proyecto en Vercel (cuenta aictmopenclaw), la página responde.
 
+## Agregar la foto de Iván
+Guardar la foto como `assets/foto.jpg` (cuadrada, 600x600 px o más, menos de 300 KB) y desplegar.
+No hay que tocar código: la página muestra la foto si el archivo existe y las iniciales "IB" si no.
+
+## Idiomas
+La página trae selector ES / EN / PT en la cabecera. Detecta el idioma del teléfono al abrir,
+recuerda la elección, y acepta `?lang=en` o `?lang=pt` en la URL. Cada idioma descarga su propio vCard
+(`ivan-bastias.vcf`, `ivan-bastias-en.vcf`, `ivan-bastias-pt.vcf`) con el cargo traducido.
+Los textos están en el diccionario `I18N` dentro de `index.html`.
+
 ## Actualizar datos
-Editar `index.html` y `ivan-bastias.vcf`, hacer commit y push a `main`. Vercel publica solo.
+Editar `index.html` y los tres `.vcf`, hacer commit y push a `main`, y desplegar con `npx -y vercel@latest --prod --yes` desde esta carpeta (sesión Vercel de aictm).
 El QR impreso no cambia: sigue apuntando a la misma URL.
 
 ## Entorno local

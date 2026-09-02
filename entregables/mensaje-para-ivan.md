@@ -25,6 +25,10 @@ Este QR nuevo codifica directamente la dirección de tu tarjeta. No hay platafor
 
 Si cambia tu número, cargo o correo, se edita la página y listo: el QR impreso sigue funcionando porque la dirección es la misma. Solo hay que avisarnos.
 
+## Idiomas
+
+La tarjeta tiene botones ES / EN / PT arriba a la derecha. Sirve para ferias internacionales o Brasil: el visitante cambia el idioma y el botón "Guardar contacto" descarga la ficha con el cargo traducido.
+
 ## Opcional, si quieres mejorarla
 
 - Una foto tuya para la cabecera (hoy salen tus iniciales "IB").
