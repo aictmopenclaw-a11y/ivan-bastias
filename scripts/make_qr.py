@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "entregables"
 OUT.mkdir(exist_ok=True)
 
-URL = "https://aictmopenclaw-a11y.github.io/ivan-bastias/"
+URL = "https://ivan-bastias.vercel.app/"
 
 VCARD_MIN = (
     "BEGIN:VCARD\r\nVERSION:3.0\r\n"

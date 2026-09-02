@@ -1,7 +1,7 @@
 # Tarjeta digital · Iván Bastías Castex
 
-Tarjeta de contacto permanente publicada en GitHub Pages:
-**https://aictmopenclaw-a11y.github.io/ivan-bastias/**
+Tarjeta de contacto permanente publicada en Vercel (cuenta aictmopenclaw):
+**https://ivan-bastias.vercel.app/**
 
 - `index.html` — la tarjeta (HTML/CSS puro, sin build, sin dependencias).
 - `ivan-bastias.vcf` — contacto descargable (vCard 3.0).
@@ -12,10 +12,10 @@ Tarjeta de contacto permanente publicada en GitHub Pages:
 
 ## Por qué este QR no vence
 El QR impreso codifica directamente la URL de arriba. No hay acortador, plataforma ni suscripción entre medio.
-Mientras exista este repositorio en GitHub, la página responde.
+Mientras exista el proyecto en Vercel (cuenta aictmopenclaw), la página responde.
 
 ## Actualizar datos
-Editar `index.html` y `ivan-bastias.vcf`, hacer commit y push a `main`. GitHub Pages publica solo.
+Editar `index.html` y `ivan-bastias.vcf`, hacer commit y push a `main`. Vercel publica solo.
 El QR impreso no cambia: sigue apuntando a la misma URL.
 
 ## Entorno local

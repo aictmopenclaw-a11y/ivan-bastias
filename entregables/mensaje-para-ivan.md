@@ -2,7 +2,7 @@
 
 Hola Iván, te dejamos lista tu nueva tarjeta digital:
 
-**https://aictmopenclaw-a11y.github.io/ivan-bastias/**
+**https://ivan-bastias.vercel.app/**
 
 Al abrirla desde el celular aparece tu nombre, cargo, WhatsApp, teléfono, correo, dirección y las marcas de Carozzi. El botón rojo "Guardar contacto" agrega tus datos a la agenda del teléfono con un toque.
 
@@ -19,7 +19,7 @@ Al abrirla desde el celular aparece tu nombre, cargo, WhatsApp, teléfono, corre
 
 El QR anterior no apuntaba a tus datos, sino a un enlace corto de una plataforma. Cuando dejaste de pagar, la plataforma cortó ese enlace y el QR impreso quedó muerto.
 
-Este QR nuevo codifica directamente la dirección de tu tarjeta. No hay plataforma, ni suscripción, ni enlace intermedio que alguien pueda cortar. La página está alojada en GitHub, gratis y sin vencimiento.
+Este QR nuevo codifica directamente la dirección de tu tarjeta. No hay plataforma, ni suscripción, ni enlace intermedio que alguien pueda cortar. La página está alojada en Vercel, gratis y sin vencimiento.
 
 ## Si cambia algún dato
 
