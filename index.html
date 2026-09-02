@@ -104,9 +104,9 @@ body::after{
 .principal small{display:block;font-weight:400;font-size:12px;opacity:.85;margin-top:1px}
 
 /* ---------- grilla de contacto ---------- */
-.grilla{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 24px 0}
+.grilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 24px 0}
 .accion{
-  display:flex;align-items:center;gap:12px;padding:14px 14px;border-radius:14px;
+  display:flex;align-items:center;gap:12px;padding:14px 14px;border-radius:14px;min-width:0;
   background:#fff;border:1px solid var(--linea);text-decoration:none;color:var(--tinta);
   transition:transform .15s ease,border-color .15s ease,background .15s ease;
   animation:subir .7s cubic-bezier(.2,.8,.2,1) both;
