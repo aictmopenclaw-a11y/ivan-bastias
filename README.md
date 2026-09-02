@@ -15,7 +15,7 @@ El QR impreso codifica directamente la URL de arriba. No hay acortador, platafor
 Mientras exista el proyecto en Vercel (cuenta aictmopenclaw), la página responde.
 
 ## Agregar la foto de Iván
-Guardar la foto como `assets/foto.jpg` (cuadrada, 600x600 px o más, menos de 300 KB) y desplegar.
+Reemplazar `assets/foto.jpg` (cuadrada, 600x600 px o más, menos de 300 KB), subir el número en `foto.jpg?v=N` dentro de `index.html` para saltar la caché, y desplegar.
 No hay que tocar código: la página muestra la foto si el archivo existe y las iniciales "IB" si no.
 
 ## Idiomas
