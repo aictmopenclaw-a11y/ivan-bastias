@@ -75,13 +75,13 @@ def leftcol(d, x, y, text, font, fill):
 def dashed(d, x0, x1, y, S):
     for x in range(x0, x1, int(14*S)): d.line((x, y, x + int(6*S), y), fill=(29,24,22,40), width=max(1, int(2*S)))
 
-def base(W, H):
+def base(W, H, logo_h=48, logo_y=64):
     S = W / 1200
     c = Image.new("RGBA", (W, H), CREMA + (255,))
     hh = int(0.27 * H); header(c, hh)
-    lg = fit(tint_white(A / "logos/carozzi.png"), h=int(48*S)); c.alpha_composite(lg, (int(70*S), int(64*S)))
+    lg = fit(tint_white(A / "logos/carozzi.png"), h=int(logo_h*S)); c.alpha_composite(lg, (int(70*S), int(logo_y*S)))
     d = ImageDraw.Draw(c); fl = F(int(22*S), serif=False); txt = "COMPARTIR HACE BIEN"
-    bb = d.textbbox((0,0), txt, font=fl); d.text((W - int(70*S) - (bb[2]-bb[0]), int(76*S)), txt, font=fl, fill=(255,255,255,220))
+    bb = d.textbbox((0,0), txt, font=fl); d.text((W - int(70*S) - (bb[2]-bb[0]), int(logo_y*S) + (lg.height - (bb[3]-bb[1]))//2 - bb[1]), txt, font=fl, fill=(255,255,255,220))
     return c, S, hh
 
 def footer(c, bottom, S):
@@ -93,7 +93,7 @@ def footer(c, bottom, S):
         c.alpha_composite(l, (x, py + (int(56*S) - l.height)//2)); x += l.width + gap
 
 def vertical(name):
-    W, H = 1200, 1800; c, S, hh = base(W, H); d = ImageDraw.Draw(c)
+    W, H = 1200, 1800; c, S, hh = base(W, H, logo_h=84, logo_y=112); d = ImageDraw.Draw(c)
     m = 80; diam, ring = 280, 10; top = hh - 60
     fn, fc, fe, ft, fu = F(74), F(36, False), F(30, False), F(32, False), F(27, False)
     qs = 470
@@ -106,7 +106,7 @@ def vertical(name):
     y += centered(d, y, NOMBRE, fn, TINTA, W) + 22
     y += centered(d, y, CARGO, fc, ROJO, W) + 12
     y += centered(d, y, EMPRESA, fe, GRIS, W) + 46
-    qr = fit(qr_image(qs, logo_frac=0.31), w=qs); c.alpha_composite(qr, ((W - qr.width)//2, y)); y += qr.height + 44
+    qr = fit(qr_image(qs), w=qs); c.alpha_composite(qr, ((W - qr.width)//2, y)); y += qr.height + 44
     d = ImageDraw.Draw(c)
     y += centered(d, y, FONO + "   ·   " + MAIL, ft, TINTA, W) + 14
     centered(d, y, WEB, fu, GRIS, W)
