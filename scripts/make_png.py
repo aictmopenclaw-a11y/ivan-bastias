@@ -112,7 +112,7 @@ def vertical(name):
     qr = fit(qr_image(qs), w=qs); c.alpha_composite(qr, ((W - qr.width)//2, y)); y += qr.height + 44
     d = ImageDraw.Draw(c)
     line = FONO + "   ·   " + MAIL; bb = d.textbbox((0,0), line, font=ft); lh = bb[3]-bb[1]
-    ic = wa_icon(int(lh * 1.25)); gap = 14; tw = ic.width + gap + (bb[2]-bb[0]); x0 = (W - tw)//2
+    ic = wa_icon(int(lh * 1.7)); gap = 14; tw = ic.width + gap + (bb[2]-bb[0]); x0 = (W - tw)//2
     c.alpha_composite(ic, (x0, y + (lh - ic.height)//2)); d = ImageDraw.Draw(c)
     d.text((x0 + ic.width + gap - bb[0], y - bb[1]), line, font=ft, fill=TINTA); y += lh + 14
     centered(d, y, WEB, fu, GRIS, W)
@@ -139,7 +139,7 @@ def cuadrada(name):
     y += leftcol(d, x, y, CARGO, fc, ROJO) + 12
     y += leftcol(d, x, y, EMPRESA, fe, GRIS) + 34
     dashed(d, x, qx - 60, y, S); y += 34
-    bb = d.textbbox((0,0), FONO, font=ft); lh = bb[3]-bb[1]; ic = wa_icon(int(lh * 1.25))
+    bb = d.textbbox((0,0), FONO, font=ft); lh = bb[3]-bb[1]; ic = wa_icon(int(lh * 1.7))
     c.alpha_composite(ic, (x, y + (lh - ic.height)//2)); d = ImageDraw.Draw(c)
     y += leftcol(d, x + ic.width + 12, y, FONO, ft, TINTA) + 12
     y += leftcol(d, x, y, MAIL, ft, TINTA) + 14
