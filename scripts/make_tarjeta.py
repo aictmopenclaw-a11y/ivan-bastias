@@ -33,7 +33,7 @@ renderPDF.draw(qr, c, 11 * mm, (H - 32 * mm) / 2)
 # textos
 x = 50 * mm
 c.setFillColor(TINTA); c.setFont(F_SERIF, 12.5); c.drawString(x, 38 * mm, "Iván Bastías"); c.drawString(x, 32.5 * mm, "Castex")
-c.setFillColor(ROJO); c.setFont(F_SANS, 7.5); c.drawString(x, 26.5 * mm, "Compra de Envases")
+c.setFillColor(ROJO); c.setFont(F_SANS, 7.5); c.drawString(x, 26.5 * mm, "Comprador de Envases")
 c.setFillColor(GRIS); c.setFont(F_SANS, 7); c.drawString(x, 22.5 * mm, "Empresas Carozzi S.A.")
 c.setFont(F_SANS, 6.5); c.drawString(x, 15 * mm, "+56 9 6647 3044"); c.drawString(x, 11.5 * mm, "ibastias@carozzi.cl")
 c.setFillColor(ROJO); c.setFont(F_SANS, 5.5); c.drawString(x, 6 * mm, "Escanea para guardar mi contacto")

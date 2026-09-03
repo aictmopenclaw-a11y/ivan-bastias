@@ -47,7 +47,7 @@ else:
 fn = font(64); fs = font(30, serif=False); fk = font(22, serif=False)
 d.text((560, 170), "Iván Bastías", font=fn, fill="#1d1816")
 d.text((560, 245), "Castex", font=fn, fill="#1d1816")
-d.text((560, 345), "Compra de Envases", font=fs, fill="#b3121b")
+d.text((560, 345), "Comprador de Envases", font=fs, fill="#b3121b")
 d.text((560, 390), "Empresas Carozzi S.A.", font=fs, fill="#5c534e")
 d.text((560, 480), "+56 9 6647 3044  ·  ibastias@carozzi.cl", font=fk, fill="#5c534e")
 d.text((560, 520), "Toca para guardar el contacto", font=fk, fill="#5c534e")

@@ -1,4 +1,4 @@
-"""PNG diseñado con el QR integrado: vertical (impresión) y cuadrado (WhatsApp)."""
+"""PNG diseñado con foto + QR: vertical (impresión / WhatsApp) y cuadrado (redes). QR compacto, texto grande."""
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import segno
@@ -6,7 +6,9 @@ import segno
 ROOT = Path(__file__).resolve().parent.parent
 A, OUT = ROOT / "assets", ROOT / "entregables"
 URL = "https://ivan-bastias.vercel.app/"
-CREMA, PAPEL, ROJO, ROJO_OSC, TINTA, GRIS = (246,241,232), (255,253,249), (179,18,27), (126,11,18), (29,24,22), (92,83,78)
+CREMA, PAPEL, ROJO, TINTA, GRIS = (246,241,232), (255,253,249), (179,18,27), (29,24,22), (92,83,78)
+NOMBRE, CARGO, EMPRESA = "Iván Bastías Castex", "Comprador de Envases", "Empresas Carozzi S.A."
+FONO, MAIL, WEB = "+56 9 6647 3044", "ibastias@carozzi.cl", "ivan-bastias.vercel.app"
 
 def F(size, serif=True):
     return ImageFont.truetype(str(ROOT / ".venv" / ("fraunces.ttf" if serif else "instrumentsans.ttf")), size)
@@ -28,82 +30,114 @@ def qr_image(size):
     box.alpha_composite(lg, (pad, pad)); im.alpha_composite(box, ((im.width - box.width)//2, (im.height - box.height)//2))
     return im
 
+def circle_photo(diam, ring):
+    """Foto circular con anillo blanco y sombra suave (supersampleado para bordes limpios)."""
+    ss = 4; D = (diam + 2*ring) * ss
+    out = Image.new("RGBA", (D, D), (0,0,0,0)); d = ImageDraw.Draw(out)
+    d.ellipse((0, 0, D-1, D-1), fill=(255,255,255,255))
+    ph = Image.open(A / "foto.jpg").convert("RGBA").resize((diam*ss, diam*ss), Image.LANCZOS)
+    m = Image.new("L", (diam*ss, diam*ss), 0); ImageDraw.Draw(m).ellipse((0, 0, diam*ss-1, diam*ss-1), fill=255)
+    out.paste(ph, (ring*ss, ring*ss), m)
+    return out.resize((D//ss, D//ss), Image.LANCZOS)
+
+def paste_shadowed(canvas, im, xy, blur, alpha=90, dy=10):
+    sh = Image.new("RGBA", canvas.size, (0,0,0,0))
+    a = im.split()[3].point(lambda v: v * alpha // 255)
+    sh.paste((60,10,12,255), (xy[0], xy[1] + dy), a); sh = sh.filter(ImageFilter.GaussianBlur(blur))
+    canvas.alpha_composite(sh); canvas.alpha_composite(im, xy)
+
 def shadow_card(canvas, box, radius, blur=40, alpha=70, offset=(0, 18)):
     x0, y0, x1, y1 = box
     sh = Image.new("RGBA", canvas.size, (0,0,0,0)); d = ImageDraw.Draw(sh)
     d.rounded_rectangle((x0+offset[0], y0+offset[1], x1+offset[0], y1+offset[1]), radius, fill=(126,11,18,alpha))
     sh = sh.filter(ImageFilter.GaussianBlur(blur)); canvas.alpha_composite(sh)
-    d = ImageDraw.Draw(canvas); d.rounded_rectangle(box, radius, fill=PAPEL + (255,))
+    ImageDraw.Draw(canvas).rounded_rectangle(box, radius, fill=PAPEL + (255,))
 
 def header(canvas, h):
-    W = canvas.width; grad = Image.new("RGBA", (W, h))
-    px = grad.load()
+    W = canvas.width; grad = Image.new("RGBA", (W, h)); px = grad.load()
     for y in range(h):
-        for x in range(0, W):
+        for x in range(W):
             t = (x / W) * 0.55 + (y / h) * 0.45
             px[x, y] = (int(214 + (126-214)*t), int(31 + (11-31)*t), int(42 + (18-42)*t), 255)
     canvas.alpha_composite(grad, (0, 0))
-    glow = Image.new("RGBA", (W, h), (0,0,0,0)); gd = ImageDraw.Draw(glow)
-    gd.ellipse((-W*0.2, -h*0.9, W*0.6, h*0.9), fill=(255,255,255,50)); glow = glow.filter(ImageFilter.GaussianBlur(h*0.25))
-    canvas.alpha_composite(glow)
+    glow = Image.new("RGBA", (W, h), (0,0,0,0)); ImageDraw.Draw(glow).ellipse((-W*0.2, -h*0.9, W*0.6, h*0.9), fill=(255,255,255,50))
+    canvas.alpha_composite(glow.filter(ImageFilter.GaussianBlur(h*0.25)))
+
+def th(d, text, font):  # alto real del texto
+    bb = d.textbbox((0,0), text, font=font); return bb[3]-bb[1]
 
 def centered(d, y, text, font, fill, W):
-    bb = d.textbbox((0,0), text, font=font); d.text(((W - (bb[2]-bb[0]))/2 - bb[0], y), text, font=font, fill=fill)
-    return bb[3]-bb[1]
+    bb = d.textbbox((0,0), text, font=font); d.text(((W - (bb[2]-bb[0]))/2 - bb[0], y - bb[1]), text, font=font, fill=fill); return bb[3]-bb[1]
 
 def leftcol(d, x, y, text, font, fill):
     bb = d.textbbox((0,0), text, font=font); d.text((x - bb[0], y - bb[1]), text, font=font, fill=fill); return bb[3]-bb[1]
 
-def render(W, H, name, layout="vertical"):
+def dashed(d, x0, x1, y, S):
+    for x in range(x0, x1, int(14*S)): d.line((x, y, x + int(6*S), y), fill=(29,24,22,40), width=max(1, int(2*S)))
+
+def base(W, H):
     S = W / 1200
     c = Image.new("RGBA", (W, H), CREMA + (255,))
-    hh = int(0.30 * H); header(c, hh)
+    hh = int(0.27 * H); header(c, hh)
     lg = fit(tint_white(A / "logos/carozzi.png"), h=int(48*S)); c.alpha_composite(lg, (int(70*S), int(64*S)))
-    d = ImageDraw.Draw(c)
-    fl = F(int(22*S), serif=False); txt = "COMPARTIR HACE BIEN"
+    d = ImageDraw.Draw(c); fl = F(int(22*S), serif=False); txt = "COMPARTIR HACE BIEN"
     bb = d.textbbox((0,0), txt, font=fl); d.text((W - int(70*S) - (bb[2]-bb[0]), int(76*S)), txt, font=fl, fill=(255,255,255,220))
-    m = int(80*S); top = int(hh - 0.42*hh); pie = int(236*S)
-    if layout == "vertical":
-        pad_top, pad_bot, gap_qr, textos = int(70*S), int(56*S), int(44*S), int(300*S)
-        qs = int(min(W - 2*m - 2*int(120*S), H - top - pad_top - gap_qr - textos - pad_bot - pie))
-        qr = fit(qr_image(qs), w=qs)
-        bottom = top + pad_top + qr.height + gap_qr + textos + pad_bot
-        shadow_card(c, (m, top, W - m, bottom), int(36*S), blur=int(40*S))
-        qx, qy = (W - qr.width)//2, top + pad_top; c.alpha_composite(qr, (qx, qy))
-        d = ImageDraw.Draw(c); y = qy + qr.height + gap_qr
-        y += centered(d, y, "Iván Bastías Castex", F(int(58*S)), TINTA, W) + int(22*S)
-        y += centered(d, y, "Compra de Envases", F(int(28*S), False), ROJO, W) + int(12*S)
-        y += centered(d, y, "Empresas Carozzi S.A.", F(int(26*S), False), GRIS, W) + int(30*S)
-        for x in range(m + int(70*S), W - m - int(70*S), int(14*S)): d.line((x, y, x + int(6*S), y), fill=(29,24,22,40), width=max(1, int(2*S)))
-        y += int(28*S)
-        y += centered(d, y, "+56 9 6647 3044   ·   ibastias@carozzi.cl", F(int(26*S), False), TINTA, W) + int(14*S)
-        centered(d, y, "ivan-bastias.vercel.app", F(int(24*S), False), GRIS, W)
-    else:
-        bottom = H - pie; pad = int(64*S)
-        shadow_card(c, (m, top, W - m, bottom), int(36*S), blur=int(40*S))
-        qs = int(min(bottom - top - 2*pad, W * 0.40)); qr = fit(qr_image(qs), w=qs)
-        qx, qy = m + pad, top + (bottom - top - qr.height)//2; c.alpha_composite(qr, (qx, qy))
-        d = ImageDraw.Draw(c); x = qx + qr.width + int(60*S)
-        # medir bloque de texto para centrarlo verticalmente
-        fn, fc, fe, ft, fu = F(int(50*S)), F(int(24*S), False), F(int(22*S), False), F(int(22*S), False), F(int(20*S), False)
-        lines = [("Iván Bastías", fn, TINTA, int(4*S)), ("Castex", fn, TINTA, int(18*S)), ("Compra de Envases", fc, ROJO, int(10*S)),
-                 ("Empresas Carozzi S.A.", fe, GRIS, int(26*S)), ("---", None, None, int(24*S)),
-                 ("+56 9 6647 3044", ft, TINTA, int(10*S)), ("ibastias@carozzi.cl", ft, TINTA, int(12*S)), ("ivan-bastias.vercel.app", fu, GRIS, 0)]
-        total = sum(((d.textbbox((0,0), t, font=f)[3]-d.textbbox((0,0), t, font=f)[1]) if f else 0) + g for t, f, _, g in lines)
-        y = top + (bottom - top - total)//2
-        for t, f, col, g in lines:
-            if f is None:
-                for xx in range(x, W - m - int(60*S), int(14*S)): d.line((xx, y, xx + int(6*S), y), fill=(29,24,22,40), width=max(1, int(2*S)))
-            else:
-                y += leftcol(d, x, y, t, f, col)
-            y += g
-    py = bottom + int(44*S)
-    py += centered(d, py, "Escanea para guardar mi contacto", F(int(30*S)), ROJO, W) + int(36*S)
+    return c, S, hh
+
+def footer(c, bottom, S):
+    W = c.width; d = ImageDraw.Draw(c); py = bottom + int(44*S)
+    py += centered(d, py, "Escanea para guardar mi contacto", F(int(32*S)), ROJO, W) + int(34*S)
     logos = [fit(Image.open(A / f"logos/{n}.png").convert("RGBA"), w=int(150*S), h=int(56*S)) for n in ["ambrosoli","costa","bresler","san-francisco","master-cat","master-dog"]]
     gap = int(34*S); tw = sum(l.width for l in logos) + gap*(len(logos)-1); x = (W - tw)//2
     for l in logos:
         c.alpha_composite(l, (x, py + (int(56*S) - l.height)//2)); x += l.width + gap
+
+def vertical(name):
+    W, H = 1200, 1800; c, S, hh = base(W, H); d = ImageDraw.Draw(c)
+    m = 80; diam, ring = 280, 10; top = hh - 60
+    fn, fc, fe, ft, fu = F(74), F(36, False), F(30, False), F(32, False), F(27, False)
+    qs = 470
+    # altura de la tarjeta calculada desde el contenido
+    inner = diam//2 + 40 + th(d, NOMBRE, fn) + 22 + th(d, CARGO, fc) + 12 + th(d, EMPRESA, fe) + 46 + qs + 44 + th(d, FONO, ft) + 14 + th(d, WEB, fu) + 64
+    bottom = top + inner
+    shadow_card(c, (m, top, W - m, bottom), 36)
+    ph = circle_photo(diam, ring); paste_shadowed(c, ph, ((W - ph.width)//2, top - ph.height//2), blur=22)
+    y = top + diam//2 + 40
+    y += centered(d, y, NOMBRE, fn, TINTA, W) + 22
+    y += centered(d, y, CARGO, fc, ROJO, W) + 12
+    y += centered(d, y, EMPRESA, fe, GRIS, W) + 46
+    qr = fit(qr_image(qs), w=qs); c.alpha_composite(qr, ((W - qr.width)//2, y)); y += qr.height + 44
+    d = ImageDraw.Draw(c)
+    y += centered(d, y, FONO + "   ·   " + MAIL, ft, TINTA, W) + 14
+    centered(d, y, WEB, fu, GRIS, W)
+    footer(c, bottom, S)
+    c.convert("RGB").save(OUT / name, optimize=True); print("OK", name, (W, H), "tarjeta hasta", bottom)
+
+def cuadrada(name):
+    W, H = 1500, 1500; c, S, hh = base(W, H); d = ImageDraw.Draw(c)
+    m = 100; pad = 80; top = hh - 70; bottom = H - int(236*S); 
+    shadow_card(c, (m, top, W - m, bottom), 44)
+    # columna derecha: QR compacto
+    qs = 460; qr = fit(qr_image(qs), w=qs); qx = W - m - pad - qr.width; qy = top + (bottom - top - qr.height)//2
+    c.alpha_composite(qr, (qx, qy)); d = ImageDraw.Draw(c)
+    # columna izquierda: foto + textos grandes
+    x = m + pad; diam, ring = 230, 9
+    fn, fc, fe, ft, fu = F(72), F(36, False), F(30, False), F(31, False), F(27, False)
+    n1, n2 = "Iván Bastías", "Castex"
+    block = diam + 2*ring + 34 + th(d, n1, fn) + 6 + th(d, n2, fn) + 22 + th(d, CARGO, fc) + 12 + th(d, EMPRESA, fe) + 34 + 34 + th(d, FONO, ft) + 12 + th(d, MAIL, ft) + 14 + th(d, WEB, fu)
+    y = top + (bottom - top - block)//2
+    ph = circle_photo(diam, ring); paste_shadowed(c, ph, (x - ring, y), blur=18); y += ph.height + 34
+    d = ImageDraw.Draw(c)
+    y += leftcol(d, x, y, n1, fn, TINTA) + 6
+    y += leftcol(d, x, y, n2, fn, TINTA) + 22
+    y += leftcol(d, x, y, CARGO, fc, ROJO) + 12
+    y += leftcol(d, x, y, EMPRESA, fe, GRIS) + 34
+    dashed(d, x, qx - 60, y, S); y += 34
+    y += leftcol(d, x, y, FONO, ft, TINTA) + 12
+    y += leftcol(d, x, y, MAIL, ft, TINTA) + 14
+    leftcol(d, x, y, WEB, fu, GRIS)
+    footer(c, bottom, S)
     c.convert("RGB").save(OUT / name, optimize=True); print("OK", name, (W, H))
 
-render(1200, 1800, "1-tarjeta-vertical.png")
-render(1500, 1500, "2-tarjeta-cuadrada.png", layout="horizontal")
+vertical("1-tarjeta-vertical.png")
+cuadrada("2-tarjeta-cuadrada.png")
