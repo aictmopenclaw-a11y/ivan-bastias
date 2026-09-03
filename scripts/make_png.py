@@ -20,12 +20,12 @@ def fit(im, w=None, h=None):
     r = min((w / im.width) if w else 9e9, (h / im.height) if h else 9e9)
     return im.resize((max(1, round(im.width * r)), max(1, round(im.height * r))), Image.LANCZOS)
 
-def qr_image(size):
+def qr_image(size, logo_frac=0.22):
     qr = segno.make(URL, error="h", boost_error=False)
     n = qr.symbol_size(border=0)[0]; scale = max(1, size // n)
     buf = ROOT / ".venv/_qr.png"; qr.save(buf, scale=scale, border=0, dark="#1d1816", light="#ffffff")
     im = Image.open(buf).convert("RGBA")
-    lg = fit(Image.open(A / "logos/carozzi-icono.png").convert("RGBA"), w=int(im.width * 0.22))
+    lg = fit(Image.open(A / "logos/carozzi-icono.png").convert("RGBA"), w=int(im.width * logo_frac))
     pad = int(im.width * 0.018); box = Image.new("RGBA", (lg.width + 2*pad, lg.height + 2*pad), (255,255,255,255))
     box.alpha_composite(lg, (pad, pad)); im.alpha_composite(box, ((im.width - box.width)//2, (im.height - box.height)//2))
     return im
@@ -106,7 +106,7 @@ def vertical(name):
     y += centered(d, y, NOMBRE, fn, TINTA, W) + 22
     y += centered(d, y, CARGO, fc, ROJO, W) + 12
     y += centered(d, y, EMPRESA, fe, GRIS, W) + 46
-    qr = fit(qr_image(qs), w=qs); c.alpha_composite(qr, ((W - qr.width)//2, y)); y += qr.height + 44
+    qr = fit(qr_image(qs, logo_frac=0.31), w=qs); c.alpha_composite(qr, ((W - qr.width)//2, y)); y += qr.height + 44
     d = ImageDraw.Draw(c)
     y += centered(d, y, FONO + "   ·   " + MAIL, ft, TINTA, W) + 14
     centered(d, y, WEB, fu, GRIS, W)
