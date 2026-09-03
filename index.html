@@ -64,7 +64,8 @@ body::after{
 .idiomas button{font:inherit;font-size:11px;font-weight:600;letter-spacing:.08em;color:#fff;background:transparent;border:0;border-radius:999px;padding:5px 9px;cursor:pointer;opacity:.75;transition:.15s}
 .idiomas button.on{background:#fff;color:var(--rojo);opacity:1}
 .idiomas button:hover{opacity:1}
-.franja .anios{font-family:"Fraunces",serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.idiomas button:focus{outline:none}
+.idiomas button:focus-visible{outline:2px solid #fff;outline-offset:1px}
 
 /* ---------- tarjeta ---------- */
 .tarjeta{
@@ -141,8 +142,8 @@ body::after{
 /* ---------- marcas ---------- */
 .marcas{margin:26px 0 0;padding:18px 24px 0;border-top:1px dashed var(--linea);text-align:center}
 .marcas p{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave)}
-.logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 22px;margin-top:14px}
-.logos img{height:30px;width:auto;max-width:96px;object-fit:contain;filter:saturate(.95);transition:transform .2s ease}
+.logos{display:grid;grid-template-columns:repeat(3,1fr);place-items:center;gap:18px 16px;margin-top:16px}
+.logos img{height:34px;width:auto;max-width:110px;object-fit:contain;filter:saturate(.95);transition:transform .2s ease}
 .logos img:hover{transform:scale(1.08)}
 
 /* ---------- pie ---------- */
@@ -166,7 +167,6 @@ body::after{
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (min-width:640px){body{padding-bottom:64px}.tarjeta{padding-bottom:30px}}
 @media (max-width:440px){
-  .franja .anios{display:none}
   .grilla{grid-template-columns:1fr}
   .accion .s{white-space:normal}
   .nombre{font-size:clamp(28px,9vw,36px)}
@@ -179,7 +179,6 @@ body::after{
   <div class="franja-in">
     <img src="assets/logos/carozzi.png" alt="Carozzi">
     <div class="franja-der">
-      <span class="anios" data-i18n="lema">Compartir hace bien</span>
       <div class="idiomas" role="group" aria-label="Idioma / Language / Idioma">
         <button type="button" data-lang="es" class="on" aria-pressed="true">ES</button>
         <button type="button" data-lang="en" aria-pressed="false">EN</button>
