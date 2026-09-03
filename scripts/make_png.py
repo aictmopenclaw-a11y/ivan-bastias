@@ -72,6 +72,9 @@ def centered(d, y, text, font, fill, W):
 def leftcol(d, x, y, text, font, fill):
     bb = d.textbbox((0,0), text, font=font); d.text((x - bb[0], y - bb[1]), text, font=font, fill=fill); return bb[3]-bb[1]
 
+def wa_icon(h):
+    return fit(Image.open(A / "logos/whatsapp.png").convert("RGBA"), h=h)
+
 def dashed(d, x0, x1, y, S):
     for x in range(x0, x1, int(14*S)): d.line((x, y, x + int(6*S), y), fill=(29,24,22,40), width=max(1, int(2*S)))
 
@@ -108,7 +111,10 @@ def vertical(name):
     y += centered(d, y, EMPRESA, fe, GRIS, W) + 46
     qr = fit(qr_image(qs), w=qs); c.alpha_composite(qr, ((W - qr.width)//2, y)); y += qr.height + 44
     d = ImageDraw.Draw(c)
-    y += centered(d, y, FONO + "   ·   " + MAIL, ft, TINTA, W) + 14
+    line = FONO + "   ·   " + MAIL; bb = d.textbbox((0,0), line, font=ft); lh = bb[3]-bb[1]
+    ic = wa_icon(int(lh * 1.25)); gap = 14; tw = ic.width + gap + (bb[2]-bb[0]); x0 = (W - tw)//2
+    c.alpha_composite(ic, (x0, y + (lh - ic.height)//2)); d = ImageDraw.Draw(c)
+    d.text((x0 + ic.width + gap - bb[0], y - bb[1]), line, font=ft, fill=TINTA); y += lh + 14
     centered(d, y, WEB, fu, GRIS, W)
     footer(c, bottom, S)
     c.convert("RGB").save(OUT / name, optimize=True); print("OK", name, (W, H), "tarjeta hasta", bottom)
@@ -133,7 +139,9 @@ def cuadrada(name):
     y += leftcol(d, x, y, CARGO, fc, ROJO) + 12
     y += leftcol(d, x, y, EMPRESA, fe, GRIS) + 34
     dashed(d, x, qx - 60, y, S); y += 34
-    y += leftcol(d, x, y, FONO, ft, TINTA) + 12
+    bb = d.textbbox((0,0), FONO, font=ft); lh = bb[3]-bb[1]; ic = wa_icon(int(lh * 1.25))
+    c.alpha_composite(ic, (x, y + (lh - ic.height)//2)); d = ImageDraw.Draw(c)
+    y += leftcol(d, x + ic.width + 12, y, FONO, ft, TINTA) + 12
     y += leftcol(d, x, y, MAIL, ft, TINTA) + 14
     leftcol(d, x, y, WEB, fu, GRIS)
     footer(c, bottom, S)
